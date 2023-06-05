@@ -12,8 +12,8 @@ capabilities = {
         'platform': 'Windows 10',
         'build': 'Playwright Build',
         'name': 'Playwright Test',
-        'user': os.getenv('LT_USERNAME'),
-        'accessKey': os.getenv('LT_ACCESS_KEY'),
+        'user': 'vinayk',
+        'accessKey': 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
         'network': True,
         'video': True,
         'console': True,
@@ -28,7 +28,7 @@ def run(playwright):
     playwrightVersion = str(subprocess.getoutput('playwright --version')).strip().split(" ")[1]
     capabilities['LT:Options']['playwrightClientVersion'] = playwrightVersion
 
-    lt_cdp_url = 'wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
+    lt_cdp_url = 'wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=' + urllib.parse.quote(
         json.dumps(capabilities))
     browser = playwright.chromium.connect(lt_cdp_url)
     page = browser.new_page()
@@ -44,13 +44,15 @@ def run(playwright):
 
         print("Title:: ", title)
 
+        remarkMsg = "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"FAILED\", \"remark\": \"Error {\n  message='Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n  name='TimeoutError\n  stack='TimeoutError: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n    at ProgressController.run (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\progress.js:88:26)\n    at Frame.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\frames.js:999:23)\n    at FrameDispatcher.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\frameDispatcher.js:149:30)\n    at DispatcherConnection.dispatch (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\dispatcher.js:312:46)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n}\"}}"
+
         if "LambdaTest" in title:
-            set_test_status(page, "passed", "Title matched")
+            set_test_status(page, "passed", remarkMsg)
         else:
-            set_test_status(page, "failed", "Title did not match")
+            set_test_status(page, "failed", remarkMsg)
     except Exception as err:
         print("Error:: ", err)
-        set_test_status(page, "failed", str(err))
+        set_test_status(page, "failed", str(err + err + err + err))
 
     browser.close()
 

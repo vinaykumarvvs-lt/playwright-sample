@@ -17,6 +17,7 @@ const config = {
         viewport: { width: 1920, height: 1080 }
       }
     },
+<<<<<<< Updated upstream
     {
       name: 'chrome:latest:Windows 11@lambdatest',
       use: {
@@ -41,6 +42,32 @@ const config = {
         viewport: { width: 1920, height: 1080 }
       }
     }
+=======
+    // {
+    //   name: 'chrome:latest:Windows 10@lambdatest',
+    //   use: {
+    //     viewport: { width: 1280, height: 720 }
+    //   }
+    // },
+    // {
+    //   name: 'MicrosoftEdge:90:Windows 10@lambdatest',
+    //   use: {
+    //     ...devices['iPhone 12 Pro Max']
+    //   }
+    // },
+    // {
+    //   name: 'pw-firefox:latest:Windows 10@lambdatest',
+    //   use: {
+    //     viewport: { width: 1280, height: 720 }
+    //   }
+    // },
+    // {
+    //   name: 'pw-webkit:latest:Windows 10@lambdatest',
+    //   use: {
+    //     viewport: { width: 1920, height: 1080 }
+    //   }
+    // }
+>>>>>>> Stashed changes
 
     // Config for running tests in local
     // {
