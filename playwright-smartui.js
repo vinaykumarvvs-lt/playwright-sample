@@ -15,13 +15,13 @@ function delay(time) {
     'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
     'browserVersion': 'latest',
     'LT:Options': {
-      // 'platform': 'Windows 10',
-      'platform': 'MacOs Ventura',
-      'build': 'Playwright Build Share',
+      // 'platform': 'MacOs Ventura',
+      'platform': 'Windows 11',
+      'build': 'Playwright Internet Testing',
       'name': 'Playwright Test',
-      'user': '26_dec_gdprltqa',
+      'user': 'vinayk',
       // 'accessKey': 'qlOzFB4gLxYrtUjpporoCBwPLNneBWj2F4BKVXLwL04RdeI1Cj',
-      'accessKey': 'CLDPAiJbkzAvBweW5qSBU1QCVKp7wj7RhHhIJrsXcWbhzQTOTe',
+      'accessKey': 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
       'network': true,
       'video': true,
       'console': true,
@@ -29,19 +29,19 @@ function delay(time) {
       // 'fixed_ip':'10.81.8.40',
       'headless':false,
       // 'tunnel':true,
-      // 'tunnelName':'1a1a823f-a852-4ff8-8545-0bdbb80ddd07',
+      // 'tunnelName':'ea135738-e436-41b5-bae0-347be65a1e12',
       'geoLocation':'CH',
       // 'dedicatedProxy': true,
       // 'unboundRegion': 'ProductionUS2-PUSE2',
       // 'smartUIProjectName': 'TestingSmartUINewToday', //Add the required Smart UI Project name
-      "projectName": "Project Name",
-      "tags": [
-        "tag1",
-        "tag2",
-      ],
-      "buildTags": [
-        "BuildTag",
-      ]
+      // "projectName": "Project Name",
+      // "tags": [
+      //   "tag1",
+      //   "tag2",
+      // ],
+      // "buildTags": [
+      //   "BuildTag",
+      // ]
     }
   }
 
@@ -129,7 +129,7 @@ function delay(time) {
 
   const browser = await chromium.connect({
     // wsEndpoint: `wss://cdp-hub-envrn-dev.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
     // wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
@@ -148,10 +148,18 @@ function delay(time) {
     for(i = 0; i < 1; i++){
       // await page.waitForTimeout(2000)
       await page.goto('https://ifconfig.io/')
+      // await page.goto('http://localhost:8000/')
       await page.goto('https://www.bing.com')
-      await page.goto('https://ipinfo.io/')
+      // await delay(300000)
+      // await page.goto('https://ipinfo.io/')
+
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
+
       // await page.goto('https://nordvpn.com/what-is-my-ip/')
-      await delay(5000)
+      await delay(1000)
       // await page.goto('https://ifconfig.io/')
       // await delay(5000)
       // await page.goto('http://localhost:8000/')
@@ -159,19 +167,19 @@ function delay(time) {
       // await page.evaluate((_) => {},
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "One"+i }
       // })}`)
-      await page.goto('https://www.google.com')
-      await page.goto('https://www.amazon.com')
+      // await page.goto('https://www.google.com')
+      // await page.goto('https://www.amazon.com')
       // await page.evaluate((_) => {},
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Two"+i }
       // })}`)
       // await page.goto('https://www.microsoft.com')
-      // const element = await page.$('[aria-label="Enter your search term"]')
+      // const element = await page.$('[aria-label="abcd"]')
       // await element.click()
       // await page.evaluate((_) => {},
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Three"+i }
       // })}`)
       // await page.goto('https://ifconfig.io/')
-      // await page.goto(' http://localhost:8000/')
+      await page.goto(' http://localhost:8000/')
       // await page.goto('https://www.google.com')
 
       // await page.waitForTimeout(10000)
@@ -205,7 +213,7 @@ function delay(time) {
     }
   } catch (e){
       console.log("-----------" + e)
-      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: 'Test Failed' } })}`)
+      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
   }
   
 
