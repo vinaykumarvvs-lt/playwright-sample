@@ -17,16 +17,19 @@ function delay(time) {
     'LT:Options': {
       // 'platform': 'MacOs Ventura',
       'platform': 'Windows 11',
-      'build': 'Playwright Internet Testing',
+      'build': 'Playwright LH Testing',
       'name': 'Playwright Test',
+      // 'user': '26_dec_gdprltqa',
+      // 'accessKey': 'CLDPAiJbkzAvBweW5qSBU1QCVKp7wj7RhHhIJrsXcWbhzQTOTe',
+      // 'user': 'tarangsta',
+      // 'accessKey': 'mqh5njpV5FFjnXxf14y6ohCUPio8vnYfn9Wq5d8exqGGmo2VYC',
       'user': 'vinayk',
-      // 'accessKey': 'qlOzFB4gLxYrtUjpporoCBwPLNneBWj2F4BKVXLwL04RdeI1Cj',
-      'accessKey': 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
+      'accessKey': 'f4BQ78naqznTwZDt4uWq1ctbxEtzgJ4nQ7f505MmK5QtwK0nYU',
       'network': true,
       'video': true,
       'console': true,
       'visual': true,
-      // 'fixed_ip':'10.81.8.40',
+      // 'fixed_ip':'10.130.5.8',
       'headless':false,
       // 'tunnel':true,
       // 'tunnelName':'ea135738-e436-41b5-bae0-347be65a1e12',
@@ -129,7 +132,7 @@ function delay(time) {
 
   const browser = await chromium.connect({
     // wsEndpoint: `wss://cdp-hub-envrn-dev.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-    wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://cdp-oregon.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
     // wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
@@ -153,14 +156,14 @@ function delay(time) {
       // await delay(300000)
       // await page.goto('https://ipinfo.io/')
 
+      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
-      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
-      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
+      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
 
       // await page.goto('https://nordvpn.com/what-is-my-ip/')
       await delay(1000)
-      // await page.goto('https://ifconfig.io/')
+      // await page.goto('https://ifconfig.in/')
       // await delay(5000)
       // await page.goto('http://localhost:8000/')
       // await page.goto('https://the-internet.herokuapp.com');
@@ -173,13 +176,13 @@ function delay(time) {
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Two"+i }
       // })}`)
       // await page.goto('https://www.microsoft.com')
-      // const element = await page.$('[aria-label="abcd"]')
+      // const element = await page.locator('[aria-label="abcd"]')
       // await element.click()
       // await page.evaluate((_) => {},
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Three"+i }
       // })}`)
       // await page.goto('https://ifconfig.io/')
-      await page.goto(' http://localhost:8000/')
+      // await page.goto(' http://localhost:8000/')
       // await page.goto('https://www.google.com')
 
       // await page.waitForTimeout(10000)
@@ -207,7 +210,7 @@ function delay(time) {
       // const remark = "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"FAILED\", \"remark\": \"Error {\n  message='Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n  name='TimeoutError\n  stack='TimeoutError: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n    at ProgressController.run (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\progress.js:88:26)\n    at Frame.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\frames.js:999:23)\n    at FrameDispatcher.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\frameDispatcher.js:149:30)\n    at DispatcherConnection.dispatch (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\dispatcher.js:312:46)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n}\"}}"
       // const remark = "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"FAILED\", \"remark\": \"Error {\n  message='Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n  name='TimeoutError\n  stack='TimeoutError: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n    at ProgressController.run (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\progress.js:88:26)\n    at Frame.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\frames.js:999:23)\n    at FrameDispatcher.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\frameDispatcher.js:149:30)\n    at DispatcherConnection.dispatch (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\dispatcher.js:312:46)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n}\"}}"
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: remark + remark } })}`)    
-
+      await page.evaluate(() => { console.log("Console Log Generation") })
       await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Test Passed' } })}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
     }

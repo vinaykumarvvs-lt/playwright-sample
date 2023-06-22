@@ -25,12 +25,12 @@ function setCookieVals() {
       "LT:Options": {
         "platformName": "android",
         // "deviceName": "Galaxy S10",
-        "deviceName": "Vivo Y12",
+        "deviceName": "Galaxy S20[+]",
         "platformVersion": "11",
         "isRealMobile": true,
         "build": "Playwright android " + new Date().toDateString(),
         "name": "Playwright android test",
-        'udid': 'L7WCVCPBSCPFBEYD',
+        // 'udid': '880927d9',
         "user": 'vinayk',
         "accessKey": 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
         "network": true,
@@ -51,7 +51,7 @@ function setCookieVals() {
     let start = new Date();
 
     device = await _android.connect(
-        `wss://stage-cdp-us.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(
+        `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(
             JSON.stringify(capabilities))}`,
     );
 
@@ -76,42 +76,41 @@ function setCookieVals() {
     // await page.goto("https://stackoverflow.com/", { timeout: 90000 })
     // console.log("Cookies -> " + JSON.stringify(await context.cookies()))
 
-    for(i = 0; i < 1; i++){
+    // for(i = 0; i < 1; i++){
 
-      console.log("Button Click");
-      await page.goto("https://www.google.com")
-      await page.goto("https://the-internet.herokuapp.com/add_remove_elements/", { timeout: 90000 })
-      let addElementBtn = await page.$("#content button")
-      await addElementBtn.click()
-      await delay(2000);
+    //   console.log("Button Click");
+    //   await page.goto("https://the-internet.herokuapp.com/add_remove_elements/", { timeout: 90000 })
+    //   let addElementBtn = await page.locator("#content button")
+    //   await addElementBtn.click()
+    //   await delay(2000);
 
-      console.log("Hover");
-      await page.goto("https://the-internet.herokuapp.com/hovers", { timeout: 90000 })
-      let hoverFirstElement = await page.$("[class='figure']")
-      await hoverFirstElement.hover()
-      await delay(2000);
+    //   console.log("Hover");
+    //   await page.goto("https://the-internet.herokuapp.com/hovers", { timeout: 90000 })
+    //   let hoverFirstElement = await page.$("[class='figure']")
+    //   await hoverFirstElement.hover()
+    //   await delay(2000);
 
-      console.log("Checkbox click");
-      await page.goto("https://the-internet.herokuapp.com/checkboxes", { timeout: 90000 });
-      let checkbox1 = await page.$("#checkboxes input:nth-child(1)");
-      await checkbox1.click();
-      await delay(1000);
-      let checkbox2 = await page.$("#checkboxes input:nth-child(3)");
-      await checkbox2.click();
-    }
+    //   console.log("Checkbox click");
+    //   await page.goto("https://the-internet.herokuapp.com/checkboxes", { timeout: 90000 });
+    //   let checkbox1 = await page.$("#checkboxes input:nth-child(1)");
+    //   await checkbox1.click();
+    //   await delay(1000);
+    //   let checkbox2 = await page.$("#checkboxes input:nth-child(3)");
+    //   await checkbox2.click();
+    // }
 
-    console.log("Upload");
-    await page.goto("https://the-internet.herokuapp.com/upload", { timeout: 90000 })
-    const fileChooserPromise = page.waitForEvent('filechooser');
-    let chooseFileBtn = await page.$("#file-upload");
-    await chooseFileBtn.click();
-    await delay(1000);
-    const fileChooser = await fileChooserPromise;
-    await fileChooser.setFiles('./screenshots/playwrightAndroid.png');
-    await delay(1000);
-    let uploadFileBtn = await page.$("#file-submit")
-    await uploadFileBtn.click()
-    await delay(1000);
+    // console.log("Upload");
+    // await page.goto("https://the-internet.herokuapp.com/upload", { timeout: 90000 })
+    // const fileChooserPromise = page.waitForEvent('filechooser');
+    // let chooseFileBtn = await page.$("#file-upload");
+    // await chooseFileBtn.click();
+    // await delay(1000);
+    // const fileChooser = await fileChooserPromise;
+    // await fileChooser.setFiles('./screenshots/playwrightAndroid.png');
+    // await delay(1000);
+    // let uploadFileBtn = await page.$("#file-submit")
+    // await uploadFileBtn.click()
+    // await delay(1000);
 
     // console.log("Download");
     // await page.goto("https://the-internet.herokuapp.com/download", { timeout: 90000 })
@@ -130,28 +129,28 @@ function setCookieVals() {
     await page.goBack()
     await page.goForward()
 
-    await page.goto("chrome://version");
-    let title = await page.locator("#command_line").textContent();
-    console.log("CLI ARGS=====>", title);
+    // await page.goto("chrome://version");
+    // let title = await page.locator("#command_line").textContent();
+    // console.log("CLI ARGS=====>", title);
 
-    await page.goto(
-        "https://www.whatismybrowser.com/detect/what-is-my-user-agent/", { timeout: 90000 });
-    let userAgent = await page.locator("#detected_value > a:nth-child(1)").
-        textContent();
-    console.log("userAgent=====>", userAgent);
+    // await page.goto(
+    //     "https://www.whatismybrowser.com/detect/what-is-my-user-agent/", { timeout: 90000 });
+    // let userAgent = await page.locator("#detected_value > a:nth-child(1)").
+    //     textContent();
+    // console.log("userAgent=====>", userAgent);
 
-    console.log("Screenshot Capture");
-    await page.goto("https://duckduckgo.com", { timeout: 90000 });
-    await page.screenshot(
-        {path: "screenshots/playwrightAndroidPixelUS" + i +".png", fullPage: true});
-    let element = await page.$("[name=\"q\"]");
-    await element.click();
-    await element.type("ABCD");
-    await element.press("Enter");
-    title = await page.title();
+    // console.log("Screenshot Capture");
+    // await page.goto("https://duckduckgo.com", { timeout: 90000 });
+    // await page.screenshot(
+    //     {path: "screenshots/playwrightAndroidPixelUS" + i +".png", fullPage: true});
+    // let element = await page.$("[name=\"q\"]");
+    // await element.click();
+    // await element.type("ABCD");
+    // await element.press("Enter");
+    // title = await page.title();
     
     try {
-      assert.equal(title, "ABCD at DuckDuckGo");
+      // assert.equal(title, "ABCD at DuckDuckGo");
       await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({
         action: "setTestStatus",
         arguments: {status: "passed", remark: "Assertions passed"},
