@@ -25,12 +25,12 @@ function setCookieVals() {
       "LT:Options": {
         "platformName": "android",
         // "deviceName": "Galaxy S10",
-        "deviceName": "Galaxy S20[+]",
-        "platformVersion": "11",
+        "deviceName": ".*",
+        // "platformVersion": "11",
         "isRealMobile": true,
-        "build": "Playwright android " + new Date().toDateString(),
-        "name": "Playwright android test",
-        // 'udid': '880927d9',
+        "build": "Playwright Android Regex Testing " + new Date().toDateString(),
+        "name": "Playwright Test US .*",
+        // 'udid': '18357c2f',
         "user": 'vinayk',
         "accessKey": 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
         "network": true,
@@ -51,7 +51,7 @@ function setCookieVals() {
     let start = new Date();
 
     device = await _android.connect(
-        `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(
+        `wss://stage-cdp-us.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(
             JSON.stringify(capabilities))}`,
     );
 

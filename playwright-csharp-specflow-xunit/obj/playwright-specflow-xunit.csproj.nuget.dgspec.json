@@ -1,0 +1,101 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/vinayk/Development/playwright-sample/playwright-csharp-specflow-xunit/playwright-specflow-xunit.csproj": {}
+  },
+  "projects": {
+    "/Users/vinayk/Development/playwright-sample/playwright-csharp-specflow-xunit/playwright-specflow-xunit.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vinayk/Development/playwright-sample/playwright-csharp-specflow-xunit/playwright-specflow-xunit.csproj",
+        "projectName": "playwright-specflow-xunit",
+        "projectPath": "/Users/vinayk/Development/playwright-sample/playwright-csharp-specflow-xunit/playwright-specflow-xunit.csproj",
+        "packagesPath": "/Users/vinayk/.nuget/packages/",
+        "outputPath": "/Users/vinayk/Development/playwright-sample/playwright-csharp-specflow-xunit/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/vinayk/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.2.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.0.0, )"
+            },
+            "Microsoft.Playwright": {
+              "target": "Package",
+              "version": "[1.35.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[3.141.0, )"
+            },
+            "SpecFlow.Plus.LivingDocPlugin": {
+              "target": "Package",
+              "version": "[3.9.57, )"
+            },
+            "SpecFlow.xUnit": {
+              "target": "Package",
+              "version": "[3.9.69, )"
+            },
+            "dotnet-xunit": {
+              "target": "Package",
+              "version": "[2.3.1, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.410/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -13,30 +13,31 @@ function delay(time) {
 
   const capabilities = {
     'browserName': 'Chrome', // Browsers allowed: `Chrome`, `MicrosoftEdge`, `pw-chromium`, `pw-firefox` and `pw-webkit`
-    'browserVersion': 'latest',
+    'browserVersion': '112',
     'LT:Options': {
       // 'platform': 'MacOs Ventura',
-      'platform': 'Windows 11',
-      'build': 'Playwright LH Testing',
+      'platform': 'Windows 10',
+      'build': 'Playwright LH UI Testing',
       'name': 'Playwright Test',
       // 'user': '26_dec_gdprltqa',
       // 'accessKey': 'CLDPAiJbkzAvBweW5qSBU1QCVKp7wj7RhHhIJrsXcWbhzQTOTe',
-      // 'user': 'tarangsta',
-      // 'accessKey': 'mqh5njpV5FFjnXxf14y6ohCUPio8vnYfn9Wq5d8exqGGmo2VYC',
-      'user': 'vinayk',
-      'accessKey': 'f4BQ78naqznTwZDt4uWq1ctbxEtzgJ4nQ7f505MmK5QtwK0nYU',
+      'user': 'tarangsta',
+      'accessKey': 'mqh5njpV5FFjnXxf14y6ohCUPio8vnYfn9Wq5d8exqGGmo2VYC',
+      // 'user': 'vinayk',
+      // 'accessKey': 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
       'network': true,
       'video': true,
       'console': true,
       'visual': true,
-      // 'fixed_ip':'10.130.5.8',
+      // 'fixed_ip':'10.243.32.203',
       'headless':false,
       // 'tunnel':true,
       // 'tunnelName':'ea135738-e436-41b5-bae0-347be65a1e12',
-      'geoLocation':'CH',
+      'geoLocation':'GB',
       // 'dedicatedProxy': true,
       // 'unboundRegion': 'ProductionUS2-PUSE2',
-      // 'smartUIProjectName': 'TestingSmartUINewToday', //Add the required Smart UI Project name
+      // 'smartUIProjectName': 'Testing SmartUI June 27', //Add the required Smart UI Project name
+      // 'smartUIBaseline': true,
       // "projectName": "Project Name",
       // "tags": [
       //   "tag1",
@@ -132,7 +133,7 @@ function delay(time) {
 
   const browser = await chromium.connect({
     // wsEndpoint: `wss://cdp-hub-envrn-dev.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-    wsEndpoint: `wss://cdp-oregon.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
     // wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
@@ -150,19 +151,43 @@ function delay(time) {
   try {
     for(i = 0; i < 1; i++){
       // await page.waitForTimeout(2000)
-      await page.goto('https://ifconfig.io/')
       // await page.goto('http://localhost:8000/')
-      await page.goto('https://www.bing.com')
+      await page.goto('https://ifconfig.io/')
+      // await page.evaluate((_) => {},
+      // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "One"+i }
+      // })}`)
+      
+      // await page.goto('https://www.bing.com')
+      // await page.evaluate((_) => {},
+      // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Two"+i }
+      // })}`)
+
+      // await page.goto('https://www.amazon.com')
+      // await page.evaluate((_) => {},
+      // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Three"+i }
+      // })}`)
+
+      // await page.goto('https://www.youtube.com')
+      // await page.evaluate((_) => {},
+      // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Four"+i }
+      // })}`)
+
+      // await page.goto('https://www.google.com')
+      // await page.evaluate((_) => {},
+      // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Five"+i }
+      // })}`)
       // await delay(300000)
       // await page.goto('https://ipinfo.io/')
 
-      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
-      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
-
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://www.amazon.com/'}})}`)
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://www.facebook.com/'}})}`)
+      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://www.lambdatest.com/'}})}`)
+  
       // await page.goto('https://nordvpn.com/what-is-my-ip/')
-      await delay(1000)
+      // await delay(1000)
       // await page.goto('https://ifconfig.in/')
       // await delay(5000)
       // await page.goto('http://localhost:8000/')
@@ -170,6 +195,27 @@ function delay(time) {
       // await page.evaluate((_) => {},
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "One"+i }
       // })}`)
+      // await delay(5000)
+      // let response1 = await page.evaluate((_) => {}, 
+      //   `lambdatest_action: ${JSON.stringify({action: 'smartui.fetchScreenshotStatus', arguments: { screenshotName: "One"+i }})}`)
+      // console.log("Screenshot Status -> " + response1)
+
+      // let response2 = await page.evaluate((_) => {}, 
+      //   `lambdatest_action: ${JSON.stringify({action: 'smartui.fetchScreenshotStatus', arguments: { screenshotName: "Two"+i }})}`)
+      // console.log("Screenshot Status -> " + response2)
+
+      // let response3 = await page.evaluate((_) => {}, 
+      //   `lambdatest_action: ${JSON.stringify({action: 'smartui.fetchScreenshotStatus', arguments: { screenshotName: "Three"+i }})}`)
+      // console.log("Screenshot Status -> " + response3)
+
+      // let response4 = await page.evaluate((_) => {}, 
+      //   `lambdatest_action: ${JSON.stringify({action: 'smartui.fetchScreenshotStatus', arguments: { screenshotName: "Four"+i }})}`)
+      // console.log("Screenshot Status -> " + response4)
+
+      // let response5 = await page.evaluate((_) => {}, 
+      //   `lambdatest_action: ${JSON.stringify({action: 'smartui.fetchScreenshotStatus', arguments: { screenshotName: "Five"+i }})}`)
+      // console.log("Screenshot Status -> " + response5)
+
       // await page.goto('https://www.google.com')
       // await page.goto('https://www.amazon.com')
       // await page.evaluate((_) => {},
@@ -210,12 +256,15 @@ function delay(time) {
       // const remark = "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"FAILED\", \"remark\": \"Error {\n  message='Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n  name='TimeoutError\n  stack='TimeoutError: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n    at ProgressController.run (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\progress.js:88:26)\n    at Frame.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\frames.js:999:23)\n    at FrameDispatcher.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\frameDispatcher.js:149:30)\n    at DispatcherConnection.dispatch (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\dispatcher.js:312:46)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n}\"}}"
       // const remark = "lambdatest_action: { \"action\": \"setTestStatus\", \"arguments\": { \"status\": \"FAILED\", \"remark\": \"Error {\n  message='Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n  name='TimeoutError\n  stack='TimeoutError: Timeout 30000ms exceeded.\n=========================== logs ===========================\nwaiting for locator('[name=\"qq\"]')\n============================================================\n    at ProgressController.run (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\progress.js:88:26)\n    at Frame.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\frames.js:999:23)\n    at FrameDispatcher.click (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\frameDispatcher.js:149:30)\n    at DispatcherConnection.dispatch (E:\\lambda-node-remote-client\\playwright_utils\\node_modules\\playwright-core\\lib\\server\\dispatchers\\dispatcher.js:312:46)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n}\"}}"
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: remark + remark } })}`)    
-      await page.evaluate(() => { console.log("Console Log Generation") })
-      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Test Passed' } })}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Title matched' } })}`)
     }
+    // let responseAll = await page.evaluate((_) => {}, 
+    //     `lambdatest_action: ${JSON.stringify({action: 'smartui.fetchScreenshotStatus'})}`)
+    //   console.log("All Screenshot Status -> " + responseAll)
+    await page.evaluate(() => { console.log("Console Log Generation") })
+    await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'passed', remark: 'Test Passed' } })}`)
   } catch (e){
-      console.log("-----------" + e)
+      console.log("-----------" , e)
       await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({ action: 'setTestStatus', arguments: { status: 'failed', remark: e.stack } })}`)
   }
   
