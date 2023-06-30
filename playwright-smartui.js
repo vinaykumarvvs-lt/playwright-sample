@@ -17,14 +17,14 @@ function delay(time) {
     'LT:Options': {
       // 'platform': 'MacOs Ventura',
       'platform': 'Windows 10',
-      'build': 'Playwright LH UI Testing',
+      'build': 'Playwright LH Testing',
       'name': 'Playwright Test',
       // 'user': '26_dec_gdprltqa',
       // 'accessKey': 'CLDPAiJbkzAvBweW5qSBU1QCVKp7wj7RhHhIJrsXcWbhzQTOTe',
-      'user': 'tarangsta',
-      'accessKey': 'mqh5njpV5FFjnXxf14y6ohCUPio8vnYfn9Wq5d8exqGGmo2VYC',
-      // 'user': 'vinayk',
-      // 'accessKey': 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
+      // 'user': 'tarangsta',
+      // 'accessKey': 'mqh5njpV5FFjnXxf14y6ohCUPio8vnYfn9Wq5d8exqGGmo2VYC',
+      'user': 'vinayk',
+      'accessKey': 'f4BQ78naqznTwZDt4uWq1ctbxEtzgJ4nQ7f505MmK5QtwK0nYU',
       'network': true,
       'video': true,
       'console': true,
@@ -133,7 +133,7 @@ function delay(time) {
 
   const browser = await chromium.connect({
     // wsEndpoint: `wss://cdp-hub-envrn-dev.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-    wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
     // wsEndpoint: `wss://stage-cdp.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
   })
 
@@ -146,7 +146,7 @@ function delay(time) {
   console.log("Test Created")
 
   const page = await browser.newPage()
-  page.setDefaultTimeout(90000);
+  page.setDefaultTimeout(2000);
 
   try {
     for(i = 0; i < 1; i++){
@@ -157,7 +157,7 @@ function delay(time) {
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "One"+i }
       // })}`)
       
-      // await page.goto('https://www.bing.com')
+      // await page.goto('https://www.bing1.com')
       // await page.evaluate((_) => {},
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Two"+i }
       // })}`)
@@ -180,8 +180,8 @@ function delay(time) {
       // await page.goto('https://ipinfo.io/')
 
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
-      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
-      // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ipinfo.io/'}})}`)
+      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://bikeshed.com'}})}`)
+      await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://ifconfig.io/'}})}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://www.amazon.com/'}})}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://www.facebook.com/'}})}`)
       // await page.evaluate(_ => {}, `lambdatest_action: ${JSON.stringify({action: 'lighthouseReport', arguments: {url: 'https://www.lambdatest.com/'}})}`)
@@ -222,7 +222,13 @@ function delay(time) {
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Two"+i }
       // })}`)
       // await page.goto('https://www.microsoft.com')
-      // const element = await page.locator('[aria-label="abcd"]')
+      //  await delay(10000)
+      // await page.locator('input#edit-submit1').click()
+      // const element = await page.locator("[class='panel-heading'] h4").first().selectOption('blue')
+      // await element.check()
+      
+      // await page.click("[class='panel-heading'] h4", { trail: true })
+
       // await element.click()
       // await page.evaluate((_) => {},
       // `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: "Three"+i }

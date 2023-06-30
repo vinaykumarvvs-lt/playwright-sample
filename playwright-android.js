@@ -32,7 +32,7 @@ function setCookieVals() {
         "name": "Playwright Test US .*",
         // 'udid': '18357c2f',
         "user": 'vinayk',
-        "accessKey": 'ROyYgJWaWuZykSJsLT8U3SrSROp2H1giH83dWbV5Qe7uqHaABO',
+        "accessKey": 'f4BQ78naqznTwZDt4uWq1ctbxEtzgJ4nQ7f505MmK5QtwK0nYU',
         "network": true,
         "video": true,
         "console": true,
@@ -51,7 +51,7 @@ function setCookieVals() {
     let start = new Date();
 
     device = await _android.connect(
-        `wss://stage-cdp-us.lambdatestinternal.com/playwright?capabilities=${encodeURIComponent(
+        `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(
             JSON.stringify(capabilities))}`,
     );
 
