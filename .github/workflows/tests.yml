@@ -350,11 +350,28 @@ jobs:
   #     - name: Execute PW CSharp iPad Test
   #       run: dotnet run ipadtest
 
-  pw-csharp-specflow:
+  # pw-csharp-specflow:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-csharp-specflow-xunit
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Setup .NET
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: '6.0'
+  #     - run: dotnet build
+
+  #     - name: Execute PW CSharp Specflow Tests
+  #       run: dotnet test
+
+  pw-csharp-xunit:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ./playwright-csharp-specflow-xunit
+        working-directory: ./playwright-csharp-xunit
 
     steps:
       - uses: actions/checkout@v2
@@ -364,5 +381,5 @@ jobs:
           dotnet-version: '6.0'
       - run: dotnet build
 
-      - name: Execute PW CSharp Specflow Tests
+      - name: Execute PW CSharp XUnit Tests
         run: dotnet test 
