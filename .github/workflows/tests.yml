@@ -299,30 +299,47 @@ jobs:
   #     - name: Execute PW Test TS
   #       run: npm run test
 
-  pw-python:
-    runs-on: ubuntu-latest
+  # pw-python:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-python
+  #   strategy:
+  #     matrix:
+  #       python-version: ["3.9"]
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Set up Python ${{ matrix.python-version }}
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
+  #     - run: pip3 install pytest-playwright
+
+  #     - name: Execute PW Python GetTestDetails
+  #       run: python3 get_test_details_python_sample.py 
+
+  #     - name: Execute PW Python iPhone Emulation
+  #       run: python3 playwright_sample_on_iphone.py 
+
+  #     - name: Execute PW Python Sample Test
+  #       run: python3 playwright_sample.py
+
+  pw-csharp:
+    runs-on: windows-latest
     defaults:
       run:
-        working-directory: ./playwright-python
-    strategy:
-      matrix:
-        python-version: ["3.9"]
+        working-directory: ./playwright-csharp
 
     steps:
       - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
         with:
-          fetch-depth: 10
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - run: pip3 install pytest-playwright
+          dotnet-version: '6.0'
+      - run: dotnet build
 
-      - name: Execute PW Python GetTestDetails
-        run: python3 get_test_details_python_sample.py 
-
-      - name: Execute PW Python iPhone Emulation
-        run: python3 playwright_sample_on_iphone.py 
-
-      - name: Execute PW Python Sample Test
-        run: python3 playwright_sample.py
+      - name: Execute PW CSharp Test
+        run: dotnet run single 
