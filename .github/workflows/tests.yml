@@ -327,11 +327,34 @@ jobs:
   #     - name: Execute PW Python Sample Test
   #       run: python3 playwright_sample.py
 
-  pw-csharp:
+  # pw-csharp:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-csharp
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Setup .NET
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: '6.0'
+  #     - run: dotnet build
+
+  #     - name: Execute PW CSharp Single Test
+  #       run: dotnet run single 
+
+  #     - name: Execute PW CSharp iPhone Test
+  #       run: dotnet run iphonetest
+
+  #     - name: Execute PW CSharp iPad Test
+  #       run: dotnet run ipadtest
+
+  pw-csharp-specflow:
     runs-on: windows-latest
     defaults:
       run:
-        working-directory: ./playwright-csharp
+        working-directory: ./playwright-csharp-specflow-xunit
 
     steps:
       - uses: actions/checkout@v2
@@ -341,11 +364,5 @@ jobs:
           dotnet-version: '6.0'
       - run: dotnet build
 
-      - name: Execute PW CSharp Single Test
-        run: dotnet run single 
-
-      - name: Execute PW CSharp iPhone Test
-        run: dotnet run iphonetest
-
-      - name: Execute PW CSharp iPad Test
-        run: dotnet run ipadtest
+      - name: Execute PW CSharp Specflow Tests
+        run: dotnet test 
