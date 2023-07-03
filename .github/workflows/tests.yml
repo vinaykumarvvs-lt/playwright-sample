@@ -341,5 +341,11 @@ jobs:
           dotnet-version: '6.0'
       - run: dotnet build
 
-      - name: Execute PW CSharp Test
+      - name: Execute PW CSharp Single Test
         run: dotnet run single 
+
+      - name: Execute PW CSharp iPhone Test
+        run: dotnet run iphonetest
+
+      - name: Execute PW CSharp iPad Test
+        run: dotnet run ipadtest
