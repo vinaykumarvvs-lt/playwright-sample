@@ -277,24 +277,46 @@ jobs:
   #     - name: Execute PW Test JS
   #       run: npm run test
 
-  pw-test-ts:
+  # pw-test-ts:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-test-ts
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
+
+  #     - name: Execute PW Test TS
+  #       run: npm run test
+
+  pw-python:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./playwright-test-ts
+        working-directory: ./playwright-python
     strategy:
       matrix:
-        node-version: [18.x]
+        python-version: ["3.9"]
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 10
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
+          python-version: ${{ matrix.python-version }}
+      - run: pip3 install pytest-playwright
 
-      - name: Execute PW Test TS
-        run: npm run test
+      - name: Execute PW Python GetTestDetails
+        run: python3 get_test_details_python_sample.py 
