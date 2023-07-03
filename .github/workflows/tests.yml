@@ -255,11 +255,33 @@ jobs:
   #     - name: Execute PW Cucumber Jest Test
   #       run: npm test
 
-  pw-test-js:
+  # pw-test-js:
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ./playwright-test-js
+  #   strategy:
+  #     matrix:
+  #       node-version: [18.x]
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 10
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
+
+  #     - name: Execute PW Test JS
+  #       run: npm run test
+
+  pw-test-ts:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./playwright-test-js
+        working-directory: ./playwright-test-ts
     strategy:
       matrix:
         node-version: [18.x]
@@ -274,5 +296,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
 
-      - name: Execute PW Test JS
+      - name: Execute PW Test TS
         run: npm run test
