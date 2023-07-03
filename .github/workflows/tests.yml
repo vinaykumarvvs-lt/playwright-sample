@@ -63,25 +63,25 @@ jobs:
   #     - name: Execute PW SmartUI Test
   #       run: npm run test-smartui
 
-  # pw-single:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       node-version: [18.x]
+  pw-single:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
 
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 10
-  #     - name: Use Node.js ${{ matrix.node-version }}
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: ${{ matrix.node-version }}
-  #     - run: npm install
-  #     - run: npm run build --if-present
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build --if-present
 
-  #     - name: Execute PW Single Test
-  #       run: npm run test
+      - name: Execute PW Single Test
+        run: npm run test
 
   # pw-parallel:
   #   runs-on: ubuntu-latest
