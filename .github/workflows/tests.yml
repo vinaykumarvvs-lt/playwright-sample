@@ -320,3 +320,9 @@ jobs:
 
       - name: Execute PW Python GetTestDetails
         run: python3 get_test_details_python_sample.py 
+
+      - name: Execute PW Python iPhone Emulation
+        run: python3 playwright_sample_on_iphone.py 
+
+      - name: Execute PW Python Sample Test
+        run: python3 playwright_sample.py
